@@ -161,16 +161,16 @@
 
 
 <!-- Reproducibility -->
-<tr <?php echo helper_alternate_class() ?>>
-	<td class="category">
-		<?php echo lang_get( 'reproducibility' ) ?> <?php print_documentation_link( 'reproducibility' ) ?>
-	</td>
-	<td>
-		<select <?php echo helper_get_tab_index() ?> name="reproducibility">
-			<?php print_enum_string_option_list( 'reproducibility', $f_reproducibility ) ?>
-		</select>
-	</td>
-</tr>
+<!--<tr --><?php //echo helper_alternate_class() ?><!-->
+<!--	<td class="category">-->
+<!--		--><?php //echo lang_get( 'reproducibility' ) ?><!-- --><?php //print_documentation_link( 'reproducibility' ) ?>
+<!--	</td>-->
+<!--	<td>-->
+<!--		<select --><?php //echo helper_get_tab_index() ?><!-- name="reproducibility">-->
+<!--			--><?php //print_enum_string_option_list( 'reproducibility', $f_reproducibility ) ?>
+<!--		</select>-->
+<!--	</td>-->
+<!--</tr>-->
 
 <!-- Severity -->
 <tr <?php echo helper_alternate_class() ?>>

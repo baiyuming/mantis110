@@ -181,25 +181,32 @@
 
 		$t_display = array();
 		$t_sort = array();
+		$t_use_sort = array();
 		$t_show_realname = ( ON == config_get( 'show_realname' ) );
 		$t_sort_by_last_name = ( ON == config_get( 'sort_by_last_name' ) );
 		foreach ( $t_users as $t_user ) {
 			$t_user_name = string_attribute( $t_user['username'] );
 			$t_sort_name = strtolower( $t_user_name );
+            $t_use_sort_name = strtolower( $t_user_name );
 			if ( $t_show_realname && ( $t_user['realname'] <> "" ) ){
 				$t_user_name = string_attribute( $t_user['realname'] );
+				$t_use_user_name = string_attribute( $t_user['username'] );
 				if ( $t_sort_by_last_name ) {
 					$t_sort_name_bits = split( ' ', strtolower( $t_user_name ), 2 );
+					$t_use_sort_name_bits = split( ' ', strtolower( $t_use_user_name ), 2 );
 					$t_sort_name = ( isset( $t_sort_name_bits[1] ) ? $t_sort_name_bits[1] . ', ' : '' ) . $t_sort_name_bits[0];
+					$t_use_sort_name = ( isset( $t_use_sort_name_bits[1] ) ? $t_use_sort_name_bits[1] . ', ' : '' ) . $t_use_sort_name_bits[0];
 				} else {
 					$t_sort_name = strtolower( $t_user_name );
+                    $t_use_sort_name = strtolower( $t_use_user_name );
 				}
 			}
 			$t_display[] = $t_user_name;
 			$t_sort[] = $t_sort_name;
+            $t_use_sort[] = $t_use_sort_name;
 		}
-		array_multisort( $t_sort, SORT_ASC, SORT_STRING, $t_users, $t_display );
-		for ($i = 0; $i < count( $t_sort ); $i++ ) {
+		array_multisort( $t_use_sort, SORT_ASC, SORT_STRING, $t_users, $t_display );
+		for ($i = 0; $i < count( $t_use_sort ); $i++ ) {
 			$t_row = $t_users[$i];
 			PRINT '<option value="' . $t_row['id'] . '" ';
 			check_selected( $p_user_id, $t_row['id'] );

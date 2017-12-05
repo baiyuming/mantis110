@@ -171,7 +171,7 @@
 </tr>
 
 <script type="text/javascript">
-	document.getElementById("notice").innerHTML = "页面、控件、焦点、格式不美观、不合理、不统一、不全面，提示信息不准确、不够全面，文字性的错误";
+	document.getElementById("notice").innerHTML = "设计错误";
 	var category = new Object();
 	var message = new Object();
 	category["20"] = 10;//高

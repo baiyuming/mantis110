@@ -113,7 +113,7 @@ if ( ( $t_resolved <= $f_new_status ) && ( ( CLOSED > $f_new_status ) || ( $t_bu
 	</td>
 	<td>
 		<select name="resolution">
-			<?php 
+			<?php
                 $t_resolution = $t_bug_is_open ? FIXED : $t_current_resolution;
                 print_enum_string_option_list( "resolution", $t_resolution );
             ?>
@@ -121,6 +121,32 @@ if ( ( $t_resolved <= $f_new_status ) && ( ( CLOSED > $f_new_status ) || ( $t_bu
 	</td>
 </tr>
 <?php } ?>
+
+
+
+
+
+    <?php
+    $t_current_resolution = $t_bug->resolution;
+    $t_bug_is_open = in_array( $t_current_resolution, array( OPEN, REOPENED ) );
+    if ( ( $t_resolved <= $f_new_status ) && ( ( CLOSED > $f_new_status ) || ( $t_bug_is_open ) ) ) { ?>
+        <!-- Resolution -->
+        <tr <?php echo helper_alternate_class() ?>>
+            <td class="category" style="color:red" >
+                <?php echo lang_get( 'reproducibility' ) ?>
+            </td>
+            <td>
+                <select <?php echo helper_get_tab_index() ?> name="reproducibility">
+                    <?php print_enum_string_option_list( 'reproducibility', $t_bug->reproducibility ) ?>
+                </select>
+            </td>
+        </tr>
+    <?php } ?>
+
+
+
+
+
 
 <?php
 if ( ( $t_resolved <= $f_new_status ) && ( CLOSED > $f_new_status ) ) { ?>
