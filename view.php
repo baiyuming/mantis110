@@ -25,7 +25,6 @@
 <script type="text/javascript">
 	function setValue(){
 		var  teamArr = document.getElementById("handler_id");
-		console.log('ttttt--->>',teamArr)
 		   for(var i=0;i<teamArr.options.length;i++){
 		 	   if(teamArr[i].selected){
 		 		  document.getElementById("assigntext").value = teamArr[i].text;
@@ -58,8 +57,10 @@
 		// }
 	}
     var  teamArr = document.getElementById("handler_id");
-
-	for( var i = 0 ; i < teamArr.length; i++ ){
-        teamArr[i].dataset.pinyin = pinyinUtil.getFirstLetter(teamArr[i].text).toLocaleLowerCase();
+    if(teamArr){
+        for( var i = 0 ; i < teamArr.length; i++ ){
+            teamArr[i].dataset.pinyin = pinyinUtil.getFirstLetter(teamArr[i].text).toLocaleLowerCase();
+        }
     }
+
 </script>

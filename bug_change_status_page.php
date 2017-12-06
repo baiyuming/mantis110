@@ -136,7 +136,7 @@ if ( ( $t_resolved <= $f_new_status ) && ( ( CLOSED > $f_new_status ) || ( $t_bu
                 <?php echo lang_get( 'reproducibility' ) ?>
             </td>
             <td>
-                <select <?php echo helper_get_tab_index() ?> name="reproducibility">
+                <select <?php echo helper_get_tab_index() ?> name="reproducibility" id="reproducibility_id">
                     <?php print_enum_string_option_list( 'reproducibility', $t_bug->reproducibility ) ?>
                 </select>
             </td>
@@ -353,10 +353,31 @@ if ( ( $f_new_status >= $t_resolved ) && ( CLOSED > $f_new_status ) ) { ?>
 <!-- Submit Button -->
 <tr>
 	<td class="center" colspan="2">
-		<input type="submit" class="button" value="<?php echo lang_get( $t_status_label . '_bug_button' ) ?>" />
+		<input type="submit" id="reproducibility_button" class="button" onclick="check()" value="<?php echo lang_get( $t_status_label . '_bug_button' ) ?>" />
 	</td>
 </tr>
 
+    <script>
+        var reproducibility_arr = document.getElementById('reproducibility_id')
+        var reproducibility_button = document.getElementById('reproducibility_button')
+        if(reproducibility_button.value == '解决问题'){
+            reproducibility_button.type = 'button';
+        }
+        function check() {
+            if(reproducibility_button.value == '解决问题'){
+                for(var i =0;i<reproducibility_arr.length;i++){
+                    if(reproducibility_arr[i].selected){
+                        if(reproducibility_arr.options[i].value == 170){
+                            alert('请选择缺陷分类！')
+                        }else {
+                            reproducibility_button.type = 'submit'
+                        }
+                    }
+                }
+            }
+
+        }
+    </script>
 
 </table>
 </form>
