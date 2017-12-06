@@ -262,7 +262,12 @@
 			echo '</script>' . "\n";
 			echo "\t" . '<script type="text/JavaScript" src="javascript/ajax.js">';
 			echo '</script>' . "\n";
-
+            echo "\t" . '<script type="text/javascript" language="JavaScript" src="javascript/dict/pinyin_dict_notone.js">';
+            echo '</script>' . "\n";
+            echo "\t" . '<script type="text/javascript" language="JavaScript" src="javascript/dict/pinyin_dict_withtone.js">';
+            echo '</script>' . "\n";
+            echo "\t" . '<script type="text/javascript" language="JavaScript" src="javascript/dict/pinyinUtil.js">';
+            echo '</script>' . "\n";
 			global $g_enable_projax;
 
 			if ( $g_enable_projax ) {
@@ -1027,6 +1032,11 @@
 		$t_button_text = lang_get( 'bug_assign_to_button' );
 		PRINT "<input type=\"submit\" class=\"button\" value=\"$t_button_text\" />";
 
+        #zhipaisomebody
+
+        echo '<input size="15" type="text" id="assigntext" onblur="changetText();"/>';
+
+
 		PRINT " <select name=\"handler_id\" id=\"handler_id\" onchange=\"setValue();\">"; # space at beginning of line is important
 
 		$t_already_selected = false;
@@ -1214,12 +1224,7 @@
 		echo '<td class="center">';
 		html_button_bug_delete( $p_bug_id );
 		echo '</td>';
-		
-		#zhipaisomebody
-		
-		echo '<td class="center"><input type="text" id="assigntext" onblur="changetText();"/>';
-		
-		echo '</td>';
+
 		
 		helper_call_custom_function( 'print_bug_view_page_custom_buttons', array( $p_bug_id ) );
 		

@@ -25,6 +25,7 @@
 <script type="text/javascript">
 	function setValue(){
 		var  teamArr = document.getElementById("handler_id");
+		console.log('ttttt--->>',teamArr)
 		   for(var i=0;i<teamArr.options.length;i++){
 		 	   if(teamArr[i].selected){
 		 		  document.getElementById("assigntext").value = teamArr[i].text;
@@ -35,22 +36,30 @@
 	function changetText(){
   		var uname = document.getElementById("assigntext").value; 
 		var  teamArr = document.getElementById("handler_id");
+
 		var oname = new Object();
 		
 	   for(var i=0;i<teamArr.options.length;i++){
 		   oname[teamArr[i].text] = teamArr[i].value;
+		   var pinyin = teamArr[i].dataset.pinyin;
+           oname[teamArr[i]['pinyin']] = pinyin;
 		  if(uname != ""){   
-	         if( teamArr[i].text == uname){
+	         if( teamArr[i].text == uname || pinyin.indexOf(uname)>-1){
 	    	      teamArr[i].selected = true;
 			  }
 		  }
 	   }
 	   
-	   if(! oname[uname] && uname != ""){
-			alert("请重新输入指派人或选择正确的指派人");
-			//document.getElementById("assigntext").value = "";
-			//return;
-		}  
+	   // if(! oname[uname] && uname != ""){
+	   //     console.log('--->>',oname,uname)
+		// 	alert("请重新输入指派人或选择正确的指派人");
+		// 	//document.getElementById("assigntext").value = "";
+		// 	//return;
+		// }
 	}
-	
+    var  teamArr = document.getElementById("handler_id");
+
+	for( var i = 0 ; i < teamArr.length; i++ ){
+        teamArr[i].dataset.pinyin = pinyinUtil.getFirstLetter(teamArr[i].text).toLocaleLowerCase();
+    }
 </script>
