@@ -843,7 +843,7 @@
 			# resort the list into ascending order
 			ksort( $t_enum_list );
 			reset( $t_enum_list );
-			echo '<select ', helper_get_tab_index(), ' name="' . $p_select_label . '">';
+			echo '<select ', helper_get_tab_index(), ' name="' . $p_select_label . '" id="status_id">';
 			foreach ( $t_enum_list as $key => $val ) {
 				echo "<option value=\"$key\"";
 				check_selected( $key, $p_current_value );

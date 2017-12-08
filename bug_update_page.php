@@ -428,7 +428,7 @@
 <!-- Submit Button -->
 <tr>
 	<td class="center" colspan="6">
-		<input <?php echo helper_get_tab_index() ?> type="submit" id="reproducibility_button" class="button" onclick="check()" value="<?php echo lang_get( 'update_information_button' ) ?>" />
+		<input <?php echo helper_get_tab_index() ?> type="button" id="reproducibility_button" class="button" onclick="check()" value="<?php echo lang_get( 'update_information_button' ) ?>" />
 	</td>
 </tr>
 
@@ -436,23 +436,21 @@
     <script>
         var reproducibility_arr = document.getElementById('reproducibility_id')
         var reproducibility_button = document.getElementById('reproducibility_button')
-        if(reproducibility_button.value == '更新信息'){
-            reproducibility_button.type = 'button';
-        }
+
         function check() {
-            if(reproducibility_button.value == '更新信息'){
-                for(var i =0;i<reproducibility_arr.length;i++){
+            if(document.getElementById('status_id').selectedOptions[0].innerText == '已解决'){
+                for(var i = 0;i<reproducibility_arr.length;i++){
                     if(reproducibility_arr[i].selected){
                         if(reproducibility_arr.options[i].value == 170){
-                            document.body.scrollTop=50;
                             alert('请选择缺陷分类！')
                         }else {
                             reproducibility_button.type = 'submit'
                         }
                     }
                 }
+            }else {
+                reproducibility_button.type = 'submit'
             }
-
         }
     </script>
 </table>
