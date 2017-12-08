@@ -85,7 +85,7 @@
 	<td width="15%">
 		<?php echo lang_get( 'severity' ) ?>
 	</td>
-	<td width="20%">
+	<td width="20%" style="color:red">
 		<?php echo lang_get( 'reproducibility' ) ?>
 	</td>
 	<td width="15%">
@@ -123,7 +123,7 @@
 
 	<!-- Reproducibility -->
 	<td>
-		<select <?php echo helper_get_tab_index() ?> name="reproducibility">
+		<select <?php echo helper_get_tab_index() ?> name="reproducibility"  id="reproducibility_id" style="color:red">
 			<?php print_enum_string_option_list( 'reproducibility', $t_bug->reproducibility ) ?>
 		</select>
 	</td>
@@ -428,11 +428,33 @@
 <!-- Submit Button -->
 <tr>
 	<td class="center" colspan="6">
-		<input <?php echo helper_get_tab_index() ?> type="submit" class="button" value="<?php echo lang_get( 'update_information_button' ) ?>" />
+		<input <?php echo helper_get_tab_index() ?> type="submit" id="reproducibility_button" class="button" onclick="check()" value="<?php echo lang_get( 'update_information_button' ) ?>" />
 	</td>
 </tr>
 
 
+    <script>
+        var reproducibility_arr = document.getElementById('reproducibility_id')
+        var reproducibility_button = document.getElementById('reproducibility_button')
+        if(reproducibility_button.value == '更新信息'){
+            reproducibility_button.type = 'button';
+        }
+        function check() {
+            if(reproducibility_button.value == '更新信息'){
+                for(var i =0;i<reproducibility_arr.length;i++){
+                    if(reproducibility_arr[i].selected){
+                        if(reproducibility_arr.options[i].value == 170){
+                            document.body.scrollTop=50;
+                            alert('请选择缺陷分类！')
+                        }else {
+                            reproducibility_button.type = 'submit'
+                        }
+                    }
+                }
+            }
+
+        }
+    </script>
 </table>
 </form>
 
