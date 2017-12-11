@@ -1354,7 +1354,7 @@
 	#$g_severity_enum_string				= '10:feature,20:trivial,30:text,40:tweak,50:minor,60:major,70:crash,80:block';
 	$g_severity_enum_string				= '10:feature,20:trivial,30:text,40:tweak,50:minor';
 #	$g_reproducibility_enum_string      = '120:advice,130:others,100:new requirement,110:dirtydata,10:existerr,70:pageerr,80:propertyerr,20:designerr,50:logic,90:enviromenterr,30:javascripterr,160:br,40:functionerr,60:documenterr,140:story,150:components';
-	$g_reproducibility_enum_string      = '170:null,140:story,150:components,160:br,20:trivial,90:enviromenterr';
+	$g_reproducibility_enum_string      = '170:null,140:story,150:components,160:br,20:trivial,90:enviromenterr,180:compatibility';
 	#$s_reproducibility_enum_string    = '120:建议,130:其他,100:新需求,110:脏数据,10:既存错误,70:页面错误,80:性能错误,20:设计错误,50:业务逻辑错误,90:环境配置问题,30:javascript错误,160:分支未考虑逻辑,40:功能点遗漏或错误,,60:部署文档脚本错误,140:story内部和ui错误,150:组件或者服务之间接口问题';
 
 #	$g_reproducibility_enum_string      = '10:existerr,20:designerr,30:javascripterr,40:functionerr,50:logic,60:documenterr,70:pageerr,80:propertyerr,90:enviromenterr,100:new requirement,110:dirtydata,120:advice,130:others';
